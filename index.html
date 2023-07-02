@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+      integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+  </head>
+
+  <body>
+    <div class="d-none">
+      <svg width="0" height="0" class="hidden">
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="delivery-time-1" fill="none" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round">
+          <title>Delivery Time</title>
+          <desc>A line styled icon from Orion Icon Library.</desc>
+          <path d="M62 46v-5l-8-7h-8"></path>
+          <circle cx="24" cy="54" r="4"></circle>
+          <circle cx="54" cy="54" r="4"></circle>
+          <path d="M50 54H28m-8 0h-4v-8h46v8h-4M24.5 24H46v22m-30 0V29.8M2 38h6m-2 8h2"></path>
+          <circle cx="14" cy="18" r="12"></circle>
+          <path d="M14 12v8h6"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="helpline-24h-1" fill="none" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round">
+          <title>Helpline 24h</title>
+          <desc>A line styled icon from Orion Icon Library.</desc>
+          <path d="M52.3 48.8c1.2.8 3 1.9 2.7 4.3S51 62 43 62s-17.7-6.3-26.2-14.8S2 28.9 2 21 9 9.3 10.9 9s3.6 1.5 4.3 2.7l6 9.2a4.3 4.3 0 0 1-1.1 5.8c-2.6 2.1-6.8 4.6 2.9 14.3s12.3 5.4 14.3 2.9a4.3 4.3 0 0 1 5.8-1.1z"></path>
+          <path d="M54 2l-6 14h14m-4-6v12m-14 0H32l8.5-10v-.2A6 6 0 0 0 32 3.6"></path>
+        </symbol>
+
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="label-tag-1" fill="none" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round">
+          <title>Label Tag</title>
+          <desc>A line styled icon from Orion Icon Library.</desc>
+          <path 
+            d="M25.6 61L3 38.4 38.4 3l21.2 1.4L61 25.6 25.6 61z"></path>
+          <circle cx="48" cy="15" r="4" ></circle>
+          <path d="M31.3 21.4l11.3 11.3m-22.6 0l8.5 8.5M25.6 27l5.7 5.7"></path>
+        </symbol>
+
+      </svg>
+    </div>
+    
+    <!-- Navigation -->
+    <header class="page-header">
+      <a href="#" class="brand"><i class="fas fa-shopping-cart"></i>Shopaholic</a>
+      <input type="checkbox" id="toggler-btn">
+      <label for="toggler-btn"><i class="fas fa-bars"></i></label>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <div class="toolbar">
+        <a href="#"><i class="far fa-heart"></i><small class="text-gray">(<span id="total-number-items-in-wishlist">0</span>)</small></a>
+        <a href="cart.html"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
+        <a onclick="window.login.showModal();"><i class="far fa-user"></i></a>
+      </div>
+    </header>
+    <!-- /Navigation -->
+
+    <!-- @TODO hero section -->
+    <section class="hero bg-cover bg-center py-5" style="background: url(./images/bg-banner.jpg)">
+        <!-- container -->
+        <div class="container mt-5 py-5">
+            <p>New Inspiration 2023</p>
+            <h1>20% off on new season</h1>
+            <a href="shop.html" class="but btn-primary btn-browse">Browse collections</a>
+        </div>
+    </section>
+
+
+    <!-- CATEGORIES SECTION-->
+    <section class="pt-5">
+      <div class="container">
+
+        <header class="text-center">
+          <p class="text-muted text-uppercase mb-1">Carefully created collections</p>
+          <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
+        </header>
+
+        <div class="carousel">
+          <div class="slider">
+            <div class="slide-track">
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Electronic">
+                  <img src="images/product-1.jpg" alt="Electronic" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Electronic">Electronic</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Bags">
+                  <img src="images/product-2.jpg" alt="Bags" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Bags">Bags</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="T-Shirts">
+                  <img src="images/product-3.jpg" alt="T-Shirts" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="T-Shirts">T-Shirts</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Watches">
+                  <img src="images/product-4.jpg" alt="Watches" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Watches">Watches</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Shoes">
+                  <img src="images/product-5.jpg" alt="Shoes" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Shoes">Shoes</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Parphume">
+                  <img src="images/product-6.jpg" alt="Parphume" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Parphume">Parphume</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Parphume">
+                  <img src="images/product-7.jpg" alt="Parphume" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Parphume">Parphume</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Electronic">
+                  <img src="images/product-1.jpg" alt="Electronic" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Electronic">Electronic</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Bags">
+                  <img src="images/product-2.jpg" alt="Bags" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Bags">Bags</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="T-Shirts">
+                  <img src="images/product-3.jpg" alt="T-Shirts" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="T-Shirts">T-Shirts</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Watches">
+                  <img src="images/product-4.jpg" alt="Watches" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Watches">Watches</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Shoes">
+                  <img src="images/product-5.jpg" alt="Shoes" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Shoes">Shoes</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Parphume">
+                  <img src="images/product-6.jpg" alt="Parphume" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Parphume">Parphume</strong>
+                </a>
+              </div>
+              <div class="slide carousel-item">
+                <a class="category-item" href="#!" data-category="Parphume">
+                  <img src="images/product-7.jpg" alt="Parphume" height="100" with="250">
+                  <strong class="category-item category-item-title" data-category="Parphume">Parphume</strong>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- catalog -->
+    <section class="catalog" id="catalog">
+
+      <header class="header">
+        <h2>Our <span>Products</span></h2>
+      </header>
+      <!--  -->
+      <div class="product-container">
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+          <div class="image">
+            <div class="badge text-white bg-sale">Sale</div>
+            <img src="images/product-1.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart add-to-cart"></a>
+            <a href="#" class="fas fa-heart add-to-wishlist"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+          <div class="image">
+            <img src="images/product-2.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+          <div class="image">
+            <img src="images/product-3.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+
+          <div class="image">
+            <img src="images/product-4.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+
+          <div class="image">
+            <img src="images/product-7.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+
+          <div class="image">
+            <img src="images/product-5.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <div class="icons">
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#productView" class="fas fa-eye"></a>
+          </div>
+
+          <div class="image">
+            <img src="images/product-6.jpg">
+          </div>
+
+          <div class="content">
+            <h3>Product Name</h3>
+            <div class="price">$12</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES-->
+     <section class="py-5 bg-light">
+      <div class="container">
+        <div class="flex-container text-center py-3">
+          <div class="col-lg-4 px-3">
+            <div class="d-inline-block">
+              <div class="d-flex align-items-end icon">
+                <svg class="svg-icon svg-icon-big svg-icon-light">
+                  <use xlink:href="#delivery-time-1"> </use>
+                </svg>
+                <div class="text-start ms-3">
+                  <h6 class="text-uppercase mb-1">Free shipping</h6>
+                  <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 px-3">
+            <div class="d-inline-block">
+              <div class="d-flex align-items-end icon">
+                <svg class="svg-icon svg-icon-big svg-icon-light">
+                  <use xlink:href="#helpline-24h-1"> </use>
+                </svg>
+                <div class="text-start ms-3">
+                  <h6 class="text-uppercase mb-1">24 x 7 service</h6>
+                  <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 px-3">
+            <div class="d-inline-block">
+              <div class="d-flex align-items-end icon">
+                <svg class="svg-icon svg-icon-big svg-icon-light">
+                  <use xlink:href="#label-tag-1"> </use>
+                </svg>
+                <div class="text-start ms-3">
+                  <h6 class="text-uppercase mb-1">Festivaloffers</h6>
+                  <p class="text-sm mb-0 text-muted">Free shipping worldwide</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- divider -->
+    <section class="divider bg-cover bg-center bg-fixed py-5 mt-5" style="background: url(./images/divider-bg.jpg)">
+        <!-- container -->
+        <div class="container py-5 px-4 align-right">
+            <p>New Inspiration 2023</p>
+            <h1>20% off on new season</h1>
+            <a href="shop.html">Browse collections</a>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-dark text-white">
+
+      <div class="container py-4">
+        <div class="row py-5">
+
+          <div class="col-lg-4 mb-3 mb-md-0">
+            <h6 class="text-uppercase mb-3">Customer services</h6>
+            
+            <ul class="list-unstyled mb-0 text-left">
+              <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
+              <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
+              <li><a class="footer-link" href="#!">Online Stores</a></li>
+              <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
+            </ul>
+
+          </div>
+
+          <div class="col-lg-4 mb-3 mb-md-0">
+            <h6 class="text-uppercase mb-3">Company</h6>
+            <ul class="list-unstyled mb-0 text-left">
+              <li><a class="footer-link" href="#!">What We Do</a></li>
+              <li><a class="footer-link" href="#!">Available Services</a></li>
+              <li><a class="footer-link" href="#!">Latest Posts</a></li>
+              <li><a class="footer-link" href="#!">FAQs</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-4 mb-3">
+            <h6 class="text-uppercase mb-3">Social media</h6>
+            <ul class="list-unstyled mb-0 text-left">
+              <li><a class="footer-link" href="https://www.twitter.com" target="_blank" title="Twitter" rel="nofollow"><i
+                    class="fab fa-twitter"></i> Twitter</a></li>
+              <li><a class="footer-link" href="https://www.instagram.com" target="_blank" title="Instagram"
+                  rel="nofollow"><i class="fab fa-instagram"></i> Instagram</a></li>
+              <li><a class="footer-link" href="https://www.facebook.com" target="_blank" title="Facebook"
+                  rel="nofollow"><i class="fab fa-facebook"></i> Facebook</a></li>
+              <li><a class="footer-link" href="https://www.facebook.com" target="_blank" title="Facebook"
+                  rel="nofollow"><i class="fab fa-facebook"></i> Facebook</a></li>
+            </ul>
+          </div>
+        
+        </div>
+
+        <div class="border-top pt-4" style="border-color: #1d1d1d !important">
+
+          <div class="row">
+            <div class="col-lg-6 text-start">
+              <p class="small text-muted mb-0">&copy; 2023 All rights reserved.</p>
+            </div>
+            <div class="col-lg-6 text-end">
+              <p class="small text-muted mb-0">Template designed by <a class="text-white" href="#">Shopaholic</a></p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </footer>
+    <!-- /footer -->
+
+    <div class="modal-window" style="display: block;">
+    
+      <div class="modal" id="productView">
+        <div class="modal-dialog">
+    
+          <div class="modal-content overflow-hidden border-0">
+    
+            <a href="#" class="p-4 close btn-close"><i class="fas fa-times"></i></a>
+
+            <div class="modal-body">
+
+              <div class="row align-items-stretch">
+
+                <div class="col-lg-6">
+
+                  <div class="bg-center bg-cover d-block h-100"
+                    style="background: url(https://couchjanus.github.io/images/product-2.jpg)"></div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                  <div class="p-4 my-md-4">
+
+                    <ul class="list-inline mb-2">
+
+                    </ul>
+
+                    <h2 class="h4">Air Jordan 12 gym red</h2>
+                    <p class="text-muted">$303</p>
+                    <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper
+                      leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur
+                      ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
+
+                    <div class="row align-items-stretch mb-4 btn-block">
+
+                      <div class="col-sm-7">
+                        <div class="d-flex align-items-center justify-content-between py-1 px-3"><span
+                            class="text-uppercase mr-4">Quantity</span>
+                          <div class="quantity">
+                            <i class="fas fa-caret-left dec-btn"></i>
+                            <input class="form-control" type="text" value="1">
+                            <i class="fas fa-caret-right inc-btn"></i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-5">
+                        <a class="btn btn-primary w-100 d-flex align-items-center justify-content-center" href="#!">Add to cart</a>
+                      </div>
+
+                    </div>
+
+                    <a class="btn btn-link text-dark text-decoration-none" href="#!"><i class="far fa-heart"></i>Add to
+                      wish list</a>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <dialog id="login">
+      <form action="" class="login-form">
+        <h3>sign in</h3>
+        <input type="email" name="" placeholder="enter your email" id="" class="box form-control">
+        <input type="password" name="" placeholder="enter your password" id="" class="box form-control">
+        <div class="remember form-check">
+            <input type="checkbox" name="" id="remember-me" class="form-check-input">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="sign in" class="btn btn-primary">
+        <div class="links">
+            <a href="#">forget password</a>
+            <a href="#">sign up</a>
+            <a href="#" onclick="window.login.close();">Close</a>
+        </div>
+      </form>
+    </dialog>
+  </body>
+
+</html>
