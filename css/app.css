@@ -721,6 +721,14 @@ section {
 .bg-sale {
     background-color: red;
 }
+.bg-sold {
+    background-color: grey;
+}
+
+.bg-new {
+    background-color: gold;
+}
+
 
 
 .product:hover .image img, .icons, .icons a {
