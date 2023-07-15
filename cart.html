@@ -26,9 +26,9 @@
             <a href="about.html">About</a> 
         </nav>
         <div class="toolbar">
-            <a href="#"><i class="far fa-heart"></i></a>
-            <a href="#"><i class="fas fa-dolly-flatbed"></i></a>
-            <a href="#"><i class="far fa-user"></i></a>
+          <a href="#"><i class="far fa-heart"></i><small class="text-gray">(<span id="total-number-items-in-wishlist">0</span>)</small></a>
+          <a href="cart.html"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
+          <a onclick="window.login.showModal();"><i class="far fa-user"></i></a>
         </div>
     </header>
     <!-- /Navigation -->
@@ -91,59 +91,8 @@
                     </tr>
                   </thead>
                   
-                  <tbody class="border-0">
-                    <tr>
-                      <td class="ps-0 py-3 border-light" scope="row">
-                        <a class="reset-anchor d-block" href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/boutique/2-0/img/product-detail-3.4edd674c.jpg" alt="..." width="70"></a>
-                      </td>
-                      <td class="ps-0 py-3 border-light" scope="row">
-                          <strong><a class="reset-anchor" href="detail.html">Red digital smartwatch</a></strong>
-                      </td>
-                      <td class="p-3 align-middle border-light">
-                        <p class="mb-0 small">$250</p>
-                      </td>
-                      
-                      <td class="p-3 align-middle border-light">
-                        <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
-                          <div class="quantity">
-                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1">
-                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="p-3 align-middle border-light">
-                        <p class="mb-0 small">$250</p>
-                      </td>
-                      <td class="p-3 align-middle border-light"><a class="reset-anchor" href="#!"><i class="fas fa-trash-alt small text-muted"></i></a></td>
-                    </tr>
+                  <tbody class="border-0 products-in-cart">
                     
-                    <tr>
-                      <td class="ps-0 py-3 border-0" scope="row">
-                        <a class="reset-anchor d-block" href="detail.html"><img src="https://d19m59y37dris4.cloudfront.net/boutique/2-0/img/product-detail-2.62056b28.jpg" alt="..." width="70"></a>
-                      </td>
-                      <td class="ps-0 py-3 border-0" scope="row">
-                        
-                        <strong><a class="reset-anchor" href="detail.html">Apple watch</a></strong>
-                        
-                      </td>
-                      <td class="p-3 align-middle border-0">
-                        <p class="mb-0 small">$250</p>
-                      </td>
-                      <td class="p-3 align-middle border-0">
-                        <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
-                          <div class="quantity">
-                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1">
-                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="p-3 align-middle border-0">
-                        <p class="mb-0 small">$250</p>
-                      </td>
-                      <td class="p-3 align-middle border-0"><a class="reset-anchor" href="#!"><i class="fas fa-trash-alt small text-muted"></i></a></td>
-                    </tr>
 
                   </tbody>
                 </table>
@@ -157,13 +106,14 @@
                   <h5 class="text-uppercase mb-4">Cart total</h5>
                   <ul class="list-unstyled mb-0">
                     <li class="d-flex align-items-center justify-content-between">
-                      <strong class="text-uppercase small font-weight-bold">Subtotal</strong>
-                      <span class="text-muted small">$250</span>
+                      <strong class="text-uppercase small font-weight-bold">Subtotal: $<span class="text-muted small cart-subtotal">0</span></strong>
+                    </li>
+                    <li class="d-flex align-items-center justify-content-between">
+                      <strong class="text-uppercase small font-weight-bold">Tax: $<span class="text-muted small cart-tax">0</span></strong>
                     </li>
                     <li class="border-bottom my-2"></li>
                     <li class="d-flex align-items-center justify-content-between mb-4">
-                      <strong class="text-uppercase small font-weight-bold">Total</strong>
-                      <span>$250</span>
+                      <strong class="text-uppercase small font-weight-bold">Total: $<span class="cart-total">0</span></strong>
                     </li>
                     <li>
                       <form action="#">
@@ -246,7 +196,8 @@
         </div>
       </footer>
     <!-- /footer -->
-    
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
   </body>
 
 </html>
