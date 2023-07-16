@@ -315,6 +315,95 @@ function renderCart() {
 
 }
 
+function distinctSections(items) {
+    let mapped = [...items.map(item => item.section)];
+    let unique = [...new Set(mapped)];
+    // console.log(unique)
+    return unique;
+}
+
+const categoriesId = document.getElementById('categories');
+
+let sectionName = section => {
+    let div = document.createElement('div');
+    div.setAttribute('class', 'py-2 px-4 bg-dark text-white mb-3');
+    div.innerHTML = `<strong class="text-uppercase fw-bold">${section}</strong>`;
+    return div;
+}
+
+let liElement = (obj) => `<li class="mb-2"><a class="reset-anchor category-item" href="#!" data-id="${obj.id}">${obj.name}</a></li> `;
+
+
+let ulElement = items => {
+    let ul = document.createElement('ul');
+    ul.setAttribute('class', 'list-unsyled text-muted categories');
+
+    let result = '';
+    for (let item of items) {
+        result += liElement(item);
+    }
+    ul.innerHTML = result;
+    return ul;
+}
+
+function categoriesCollation(items) {
+    let results = [];
+    let i = 0;
+    for (let section of items) {
+        results[i] = categories.filter(item => item.section === section);
+        i++;
+    }
+    return results;
+}
+
+function renderCategory(selector, products) {
+    const categorySelectors = document.querySelectorAll(selector);
+    categorySelectors.forEach(item => item.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (e.target.classList.contains('category-item')) {
+            const category = e.target.dataset.id;
+
+            const categoryFilter = items => items.filter(item => item.category == category);
+
+            productContainer.innerHTML = populateProductList(categoryFilter(products));
+        } else {
+            productContainer.innerHTML = populateProductList(products);
+        }
+
+    }))
+}
+
+const showOnly = document.querySelector('.show-only');
+
+const badgeTemplate = (item) => `<div class="form-check mb-1"><input class="form-check-input" type="checkbox" id="id-${item}" value="${item}" name="badge"><label class="form-check-label" for="id-${item}">${item}</label></div>`
+
+const renderValue = (value) => populateProductList(products.filter(product => product.badge.title.includes(value)));
+
+
+const selectPicker = document.querySelector('.selectpicker');
+
+const sortingOrders = [
+    {key: "default", value: "Default sorting"},
+    {key: "popularity", value: "Popularity Products"},
+    {key: "low-high", value: "Low to High Prices"},
+    {key: "high-low", value: "High to Low Prices"},
+];
+
+const sortingOptions = sortingOrders.map(item => `<option value="${item.key}">${item.value}</option>`).join('');
+
+let compare = (key, order = 'asc') => (a, b) => {
+    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) return 0;
+
+    const A = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
+    const B = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    comparison = (A > B) ? 1 : -1;
+    return (order === 'desc') ? -comparison : comparison;
+
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
     
     (() => {
@@ -323,6 +412,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         cartItemsAmount(cart)
         wishlistItemsAmount(wishlist)
+
+        // distinctSections(categories)
 
         if (productsInCart) {
             // console.log(productsInCart)
@@ -337,6 +428,74 @@ window.addEventListener("DOMContentLoaded", (event) => {
             addProductToWishlistButton();
             addProductToCartButton();
             detailButton(products);
+
+            if (categoriesId) {
+                let distinct = distinctSections(categories);
+
+                for (let i = 0; i < distinct.length; i++) {
+                    let collation = categoriesCollation(distinct);
+                    
+                    categoriesId.append(sectionName(distinct[i]));
+                    categoriesId.append(ulElement(collation[i]));
+
+                }
+                renderCategory('#categories', products);
+
+
+            }
+
+            if (showOnly) {
+
+                let badges = [...new Set([...products.map(item => item.badge.title)].filter(item => item != ''))];
+
+                showOnly.innerHTML = badges.map(item => badgeTemplate(item)).join("");
+
+                let checkboxes = document.querySelectorAll('input[name="badge"]');
+
+                let values = [];
+
+                checkboxes.forEach(item => {
+                    item.addEventListener('change', e => {
+                        if (e.target.checked) {
+                            values.push(item.value)
+
+                            productContainer.innerHTML = values.map(value => renderValue(value)).join("")
+                        } else {
+                            if (values.length != 0) {
+                                values.pop(item.value)
+                                productContainer.innerHTML = values.map(value => renderValue(value)).join("")
+                            }
+                        }
+
+                        if (values.length == 0) {
+                            productContainer.innerHTML = populateProductList(products);
+                        }
+                    })
+                })
+
+
+            }
+
+            if (selectPicker) {
+                selectPicker.innerHTML = sortingOptions;
+
+                selectPicker.addEventListener('change', function() {
+                    switch(this.value) {
+                        case 'low-high':
+                            productContainer.innerHTML = populateProductList(products.sort(compare('price', 'asc')));
+                            break;
+
+                        case 'high-low':
+                            productContainer.innerHTML = populateProductList(products.sort(compare('price', 'desc')));
+                            break;
+                        case 'popularity':
+                            productContainer.innerHTML = populateProductList(products.sort(compare('stars', 'desc')));
+                            break;
+                        default:
+                            productContainer.innerHTML = populateProductList(products.sort(compare('id', 'asc')));
+                    }
+                })
+            }
         }
     })();
 

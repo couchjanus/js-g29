@@ -81,6 +81,16 @@ section {
     padding-bottom: 1.5rem !important;
 }
 
+.px-4 {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+.pl-4 {
+    padding-left: 1.5rem !important;
+}
+
+
 .py-5 {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
@@ -641,7 +651,7 @@ section {
 }
 
 .catalog .product-container .product .image {
-  height: 35rem;
+  height: 25rem;
   width: 100%;
   overflow: hidden;
 }
@@ -721,15 +731,14 @@ section {
 .bg-sale {
     background-color: red;
 }
+
+.bg-new {
+    background-color: green;
+}
+
 .bg-sold {
     background-color: grey;
 }
-
-.bg-new {
-    background-color: gold;
-}
-
-
 
 .product:hover .image img, .icons, .icons a {
     transition: .2s linear;
@@ -1033,13 +1042,17 @@ thead, tbody, tfoot, tr, td, th {
 .quantity {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 .quantity input {
-    width: 2rem;
+    width: 3rem;
     text-align: center;
+    margin-right: 1em;
 }
-.quantity button {
-    background: none;
+.quantity i {
+    background: white;
     border: none;
     width: 1rem;
     outline: none;
@@ -1148,7 +1161,7 @@ textarea.form-control {
     box-shadow: 0 0 0 .25rem rgba(220, 177, 74, 0.25);
 }
 .form-check-input:checked {
-    background-color: #dcb14a;
+    background-color: var(--active-color);
     border-color: #dcb14a;
 }
 
@@ -1547,4 +1560,41 @@ dialog::backdrop {
 
 .text-warning{
     color: gold;
+}
+
+
+.form-select {
+    display: block;
+    width: 100%;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml, %3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-select:focus {
+    border-color: #eed8a5;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(220, 177, 74, 0.25);
+}
+
+.form-select-lg {
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+    border-radius: 0;
 }

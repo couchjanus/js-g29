@@ -23,12 +23,12 @@
         <a href="contact.html">Contact</a>
         <a href="about.html">About</a>
       </nav>
-
-      <div class="toolbar">
-        <a href="#"><i class="far fa-heart"></i></a>
-        <a href="cart.html"><i class="fas fa-dolly-flatbed"></i></a>
-        <a href="#"><i class="far fa-user"></i></a>
-      </div>
+<!--  -->
+<div class="toolbar">
+  <a href="#"><i class="far fa-heart"></i><small class="text-gray">(<span id="total-number-items-in-wishlist">0</span>)</small></a>
+  <a href="cart.html"><i class="fas fa-dolly-flatbed"></i><small class="text-gray">(<span id="total-number-items-in-cart">0</span>)</small></a>
+  <a onclick="window.login.showModal();"><i class="far fa-user"></i></a>
+</div>
     </header>
 
     <!-- breadcrumb -->
@@ -50,23 +50,15 @@
       </div>
     </section>
 
-    <div class="container py-5">
+    <div class="py-5">
         <div class="row">
             <aside class="col-lg-3">
                 <h2 class="text-uppercase mb-4">Categories</h2>
+                <span id="categories"></span>
                 
-                <div class="py-2 px-4 bg-dark text-white mb-3">
-                    <strong class="small text-uppercase fw-bold">Fashion &amp; Acc</strong>
-                </div>
+                <h2 class="text-uppercase mb-4">Show only</h2>
+                <span class="show-only"></span>
                 
-                <ul class="list-unstyled categories small text-muted">
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Women's T-Shirts</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Men's T-Shirts</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Dresses</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Novelty socks</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Women's sunglasses</a></li>
-                    <li class="mb-2"><a class="reset-anchor" href="#!">Men's sunglasses</a></li>
-                </ul>
             </aside>              
             
             <main class="col-lg-9 mb-5 mb-lg-0">
@@ -74,24 +66,23 @@
                   <header class="header">
                       <h2>Our <span>Products</span></h2>
                   </header>
+
+                  <div class="row mb-3 align-items-center">
+                    <div class="col-lg-6 mb-2 mb-lg-0">
+                      <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <select class="selectpicker form-select form-select-lg mb-2 text-sm text-muted" name="sorting" data-width="200" data-title="Default sorting">
+                      </select>
+                    
+                    </div>
+                    </div>
+                    
                   
                   <div class="product-container">
                   
-                      <div class="product">
-                          <div class="icons">
-                              <a href="#" class="fas fa-shopping-cart"></a>
-                              <a href="#" class="fas fa-heart"></a>
-                              <a href="#" class="fas fa-eye"></a>
-                          </div>
-                          <div class="image">
-                              <img src="images/product-1.jpg">
-                          </div>
                       
-                          <div class="content">
-                              <h3>Product Name</h3>
-                              <div class="price">$12</div>
-                          </div>
-                      </div>
                       
                   </div>
                 </section>
@@ -160,7 +151,28 @@
       </div>
 
     </footer>
-    <!-- /footer -->
+    <div class="modal-window" style="display: block;"></div>
+    
 
+    <dialog id="login">
+      <form action="" class="login-form">
+        <h3>sign in</h3>
+        <input type="email" name="" placeholder="enter your email" id="" class="box form-control">
+        <input type="password" name="" placeholder="enter your password" id="" class="box form-control">
+        <div class="remember form-check">
+            <input type="checkbox" name="" id="remember-me" class="form-check-input">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="sign in" class="btn btn-primary">
+        <div class="links">
+            <a href="#">forget password</a>
+            <a href="#">sign up</a>
+            <a href="#" onclick="window.login.close();">Close</a>
+        </div>
+      </form>
+    </dialog>
+    <!-- /footer -->
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
