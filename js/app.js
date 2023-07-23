@@ -346,7 +346,7 @@ let ulElement = items => {
     return ul;
 }
 
-function categoriesCollation(items) {
+function categoriesCollation(items, categories) {
     let results = [];
     let i = 0;
     for (let section of items) {
@@ -378,7 +378,7 @@ const showOnly = document.querySelector('.show-only');
 
 const badgeTemplate = (item) => `<div class="form-check mb-1"><input class="form-check-input" type="checkbox" id="id-${item}" value="${item}" name="badge"><label class="form-check-label" for="id-${item}">${item}</label></div>`
 
-const renderValue = (value) => populateProductList(products.filter(product => product.badge.title.includes(value)));
+const renderValue = (value, products) => populateProductList(products.filter(product => product.badge.title.includes(value)));
 
 
 const selectPicker = document.querySelector('.selectpicker');
@@ -404,6 +404,100 @@ let compare = (key, order = 'asc') => (a, b) => {
 
 }
 
+const svgContent = index => {
+    switch(index) {
+        case 0:
+            return `<path d="M62 46v-5l-8-7h-8"></path>
+            <circle cx="24" cy="54" r="4"></circle>
+            <circle cx="54" cy="54" r="4"></circle>
+            <path d="M50 54H28m-8 0h-4v-8h46v8h-4M24.5 24H46v22m-30 0V29.8M2 38h6m-2 8h2"></path>
+            <circle cx="14" cy="18" r="12"></circle>
+            <path d="M14 12v8h6"></path>`;
+        case 1:
+            return ` <path d="M52.3 48.8c1.2.8 3 1.9 2.7 4.3S51 62 43 62s-17.7-6.3-26.2-14.8S2 28.9 2 21 9 9.3 10.9 9s3.6 1.5 4.3 2.7l6 9.2a4.3 4.3 0 0 1-1.1 5.8c-2.6 2.1-6.8 4.6 2.9 14.3s12.3 5.4 14.3 2.9a4.3 4.3 0 0 1 5.8-1.1z"></path>
+            <path d="M54 2l-6 14h14m-4-6v12m-14 0H32l8.5-10v-.2A6 6 0 0 0 32 3.6"></path>`;
+        case 2:
+            return `<path 
+            d="M25.6 61L3 38.4 38.4 3l21.2 1.4L61 25.6 25.6 61z"></path>
+          <circle cx="48" cy="15" r="4" ></circle>
+          <path d="M31.3 21.4l11.3 11.3m-22.6 0l8.5 8.5M25.6 27l5.7 5.7"></path>`;
+    }
+}
+
+function makeIcon(node, i) {
+    const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+
+    svgIcon.setAttribute('fill', 'none')
+    svgIcon.setAttribute('viewBox', '0 0 64 64')
+
+    svgIcon.setAttribute('stroke', 'black')
+
+    svgIcon.classList.add('svg-icon', 'svg-icon-big')
+
+    svgIcon.innerHTML = svgContent(i)
+    // svgIcon.innerHTML = `<circle cx="48" cy="15" r="4"></circle>`
+
+    return node.append(svgIcon)
+   
+}
+
+const makeServiceBlock = () => {
+
+    const serviceDescription = [
+        {
+            title: 'Free shipping',
+            description: 'Free shipping worldwide'
+        },
+        {
+            title: '24 x 7 service',
+            description: 'Free shipping worldwide'
+        },
+        {
+            title: 'Festivaloffers',
+            description: 'Free shipping worldwide'
+        },
+    ]
+
+
+    const srvContainer = item => `<div class="col-lg-4 px-3">
+    <div class="d-inline-block">
+    <div class="d-flex align-items-end icon srv">
+        
+        <div class="text-start ms-3">
+        <h6 class="text-uppercase mb-1">${item.title}</h6>
+        <p class="text-sm mb-0 text-muted">${item.description}</p>
+        </div>
+    </div>
+    </div>
+    </div>`;
+
+
+    let result = ''
+
+    for (let i=0; i<serviceDescription.length; i++) {
+        result += srvContainer(serviceDescription[i])
+    }
+    return result
+}
+
+function fetchData(url) {
+    return fetch(url, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    }).then(response => {
+        if(response.status >= 400) {
+            return response.json().then(err => {
+                const error = new Error('Something wend wrong!')
+                error.data = err
+                throw error
+            })
+        }
+        return response.json()
+    })
+}
+
+const url = 'https://my-json-server.typicode.com/couchjanus/db';
+
 window.addEventListener("DOMContentLoaded", (event) => {
     
     (() => {
@@ -413,7 +507,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
         cartItemsAmount(cart)
         wishlistItemsAmount(wishlist)
 
+        const services = document.querySelector('.services')
+
+        if (services) {
+            services.innerHTML = makeServiceBlock()
+
+            let srv = document.querySelectorAll(".srv")
+
+            srv.forEach((node, i) => makeIcon(node, i))
+        }
+
+
         // distinctSections(categories)
+
+        fetchData(`${url}/products`)
+
+        .then(products => {
+            // console.log(products)
+
+       
 
         if (productsInCart) {
             // console.log(productsInCart)
@@ -430,10 +542,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
             detailButton(products);
 
             if (categoriesId) {
+                fetchData(`${url}/categories`)
+                .then(categories => {
+
+               
                 let distinct = distinctSections(categories);
 
                 for (let i = 0; i < distinct.length; i++) {
-                    let collation = categoriesCollation(distinct);
+                    let collation = categoriesCollation(distinct, categories);
                     
                     categoriesId.append(sectionName(distinct[i]));
                     categoriesId.append(ulElement(collation[i]));
@@ -441,7 +557,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 }
                 renderCategory('#categories', products);
 
-
+            })
             }
 
             if (showOnly) {
@@ -459,11 +575,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
                         if (e.target.checked) {
                             values.push(item.value)
 
-                            productContainer.innerHTML = values.map(value => renderValue(value)).join("")
+                            productContainer.innerHTML = values.map(value => renderValue(value, products)).join("")
                         } else {
                             if (values.length != 0) {
                                 values.pop(item.value)
-                                productContainer.innerHTML = values.map(value => renderValue(value)).join("")
+                                productContainer.innerHTML = values.map(value => renderValue(value, products)).join("")
                             }
                         }
 
@@ -497,6 +613,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 })
             }
         }
+    }) // end fetch
     })();
 
 })
